@@ -1,0 +1,422 @@
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+
+:root {
+  --side-padding: 3rem;
+  --top-padding: 1.5rem;
+  --black: #000;
+  --black5: #00000080;
+  --white: #fff;
+  --white6: #ffffff99;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-weight: 500;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Poppins";
+  min-height: 100vh;
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: 500;
+}
+
+h2 {
+  font-size: 1.7rem;
+  font-weight: 600;
+}
+
+h3 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+h4 {
+  font-size: clamp(0.3rem, 0.5rem + 0.5vw, 2vw);
+  font-weight: 500;
+}
+
+h5 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+button {
+  padding: 0.7em 1.1em;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.5s ease;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: var(--black);
+}
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  padding: var(--top-padding) var(--side-padding);
+  transition: all ease .5s;
+
+  background-color: var(--white);
+  
+  .logo {
+    color: var(--black);
+  }
+  
+  a {
+    color: var(--black);
+  }
+
+  li.active {
+    border: 2px solid var(--black);
+  
+    a {
+      color: var(--white);
+    }
+  }
+}
+
+header.scroll-up {
+  background-color: var(--black);
+  
+  .logo {
+    color: var(--white);
+  }
+  
+  a {
+    color: var(--white);
+  }
+
+  li.active {
+    border: 2px solid var(--white);
+  
+    a {
+      color: var(--white);
+    }
+  }
+}
+
+header.scroll-down {
+  translate: 0 -100%;
+}
+
+.logo {
+  font-family: "Merriweather", serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+header nav ul:not(.sidebar) {
+  display: flex;
+  gap: 1.5em;
+  align-items: center;
+}
+
+li {
+  transition: ease 0.5s;
+  padding: 0.3em 0.7em;
+}
+
+li.active {
+  border-radius: 4px;
+  background-color: var(--black);
+  border: 2px solid var(--black);
+
+  a {
+    color: var(--white);
+  }
+}
+
+.menu {
+  display: none;
+}
+
+header nav .sidebar {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 250px;
+  z-index: 99;
+}
+
+.sidebar li {
+  padding: 0.8em;
+}
+
+.sidebar li a {
+  display: block;
+  margin-left: 1rem;
+  padding: unset;
+  border-radius: unset;
+}
+
+.sidebar li {
+  width: 100%;
+}
+
+footer {
+  padding: 0 var(--side-padding);
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+.featured {
+  overflow: hidden;
+  position: relative;
+  min-height: 500px;
+  aspect-ratio: 16 / 8;
+  border-radius: 20px;
+  align-items: end;
+  margin: 0 var(--side-padding);
+  transition: ease 1s;
+  cursor: pointer;
+  
+  &:hover {
+    h4 {
+      border: 2px solid var(--white);
+      background-color: var(--white);
+      color: var(--black);
+    }
+  }
+}
+  
+  .featured-content {
+    padding: 2em;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 3;
+    color: var(--white);
+    background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+}
+
+.featured-content > * {
+  margin-bottom: 1rem;
+}
+
+.featured h4 {
+  width: fit-content;
+  border: 2px solid var(--white);
+  border-radius: 20px;
+  padding: 0.4em 1em;
+  transition: ease .5s;
+}
+
+.featured > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.featured p {
+  color: var(--white);
+  opacity: 0.9;
+}
+
+.posts {
+  padding: 0 var(--side-padding);
+}
+
+.posts,
+.posts h2 {
+  margin-bottom: 1rem;
+}
+
+.recent {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  justify-content: center;
+  align-content: center;
+  gap: 2em;
+}
+
+.recent-post {
+  margin-bottom: 2rem;
+  transition: ease 0.5s;
+  overflow: hidden;
+}
+
+.recent-post:hover {
+  scale: 1.02;
+  cursor: pointer;
+}
+
+.img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  margin-bottom: 1.2rem;
+  border-radius: 15px;
+}
+
+.content {
+  padding-right: 0.5em;
+}
+
+.content .description {
+  color: var(--black5);
+}
+
+footer {
+  padding-bottom: calc(var(--side-padding) / 2);
+}
+
+footer .wrapper {
+  padding: var(--side-padding);
+  border-radius: 20px;
+  text-align: center;
+  background-color: var(--black);
+  color: var(--white6);
+  display: flex;
+  flex-direction: column;
+  gap: 6rem;
+}
+
+footer div h5,
+footer .links .link-title,
+footer .logo,
+footer .credits {
+  color: var(--white);
+}
+
+footer div p {
+  font-style: italic;
+}
+
+footer .links {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 200px));
+  justify-content: center;
+}
+
+.links ul {
+  margin-bottom: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.links li,
+.credits .copyrights {
+  font-weight: 300;
+  margin-bottom: 0.4em;
+}
+
+.links li {
+  color: var(--white6);
+  text-align: left;
+  transition: 0.5s ease;
+  cursor: pointer;
+}
+
+.links li:hover {
+  color: var(--white);
+}
+
+.links .link-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: default;
+}
+
+footer .credits {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+footer a {
+  font: inherit;
+  color: inherit;
+}
+
+
+
+@media (max-width: 1200px) {
+  h1 {
+    font-size: 2rem;
+  }
+}
+
+
+
+@media (max-width: 950px) {
+  header {
+    padding: var(--top-padding);
+  }
+
+  .featured {
+    margin: 0;
+    border-radius: unset;
+  }
+}
+
+
+
+@media (max-width: 800px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  .featured-content > p {
+    display: none;
+  }
+
+  footer {
+    padding: unset;
+  }
+
+  footer .wrapper {
+    border-radius: 20px 20px 0 0;
+  }
+
+  footer .credits {
+    flex-direction: column;
+    gap: 1em;
+  }
+}
+
+
+
+@media (max-width: 650px) {
+  nav {
+    display: none;
+  }
+
+  .menu {
+    display: block;
+    font-size: 1.5rem;
+  }
+}
